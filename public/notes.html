@@ -35,20 +35,23 @@
     </nav>
     <div class="container-fluid">
       <div class="row">
+        <!-- Left Column-->
         <div class="col-4 list-container" id="list-container">
           <div class="card">
             <ul class="list-group" id="list-group"></ul>
           </div>
         </div>
+
+        <!-- Right Column-->
         <div class="col-8">
-          <form class="note-form">
+          <form class="note-form vh-100">
             <input
-            class="note-title"
+            class="note-title col-12 fs-1"
             placeholder="Note Title"
             maxlength="28"
             type="text"
             />
-            <textarea class="note-textarea" placeholder="Note Text"></textarea>
+            <textarea class="note-textarea col-12 h-100" placeholder="Note Text"></textarea>
             </form>
         </div>
       </div>

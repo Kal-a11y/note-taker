@@ -11,10 +11,11 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/api', api);
 
-//Open index.html in root
-app.get('/', (req,res) => {
-    res.sendFile(path.join(__dirname,'public/index.html'));
-});
+// //Open index.html in root
+// app.get('/', (req,res) => {
+//     res.sendFile(path.join(__dirname,'public/index.html'));
+// });
+
 //Open notes.html 
 app.get('/notes', (req,res) => {
     res.sendFile(path.join(__dirname,'public/notes.html'));

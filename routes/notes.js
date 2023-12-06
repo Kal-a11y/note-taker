@@ -1,6 +1,8 @@
 const notesApi = require('express').Router();
+const { uid } = require('uid');
+const fs = require('fs');
 
-const notesList = require('../db/db.json')
+const notes_dbList = require('../db/db.json')
 
 notesApi.get('/notes', (req, res) => {
     res.json(notesList);
@@ -9,21 +11,30 @@ notesApi.get('/notes', (req, res) => {
     
 
 notesApi.post('/notes', (req, res) => {
+    //Save request
     const{ noteTitle, noteText} = req.body;
     const newNote = {
         title: noteTitle,
         text: noteText,
-        note_id: "test"
+        note_id: uid(5)
     }
-    console.log(newNote)
-    //Add unique id module
-    //get all notes
-    //add newNote
-    //overwrite database with new notes list
-    //create a card for new note
-    //add new note to notes.html on left column
 
-    //if title is undefined then set to Untitled
+    //Name undefined title
+    if (typeof newNote.title === 'undefined'){
+        newNote.title = 'Untitled Note '+ newNote.note_id
+    }
+
+    //Add new note to database
+    notes_dbList.push(newNote);
+    const dbString = JSON.stringify(notes_dbList);
+    fs.writeFile('./db/db.json', dbString, err => {
+        if (err){
+            console.log(err)
+        } else {
+            console.log('New note has been added');
+        }
+    });
+    
 });
 
 notesApi.delete('/notes/:id', (req, res) => {

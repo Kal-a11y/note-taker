@@ -13,17 +13,17 @@ notesApi.get('/notes', (req, res) => {
 
 notesApi.post('/notes', (req, res) => {
     //Save request
-    const{ noteTitle, noteText} = req.body;
+    const{ title, text} = req.body;
     const newNote = {
-        title: noteTitle,
-        text: noteText,
+        title: title,
+        text: text,
         note_id: uid(5)
     }
 
     //Name undefined title
-    if (typeof newNote.title === 'undefined'){
-        newNote.title = 'Untitled Note '+ newNote.note_id
-    }
+    // if (typeof newNote.title === 'undefined'){
+    //     newNote.title = 'Untitled Note '+ newNote.note_id
+    // }
 
     //Add new note to database
     notes_dbList.push(newNote);

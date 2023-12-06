@@ -5,6 +5,8 @@ let saveNoteBtn;
 let newNoteBtn;
 let noteList;
 
+// let startBtn;
+
 if (window.location.pathname === '/notes') {
   noteForm = document.querySelector('.note-form');
   noteTitle = document.querySelector('.note-title');
@@ -14,6 +16,9 @@ if (window.location.pathname === '/notes') {
   clearBtn = document.querySelector('.clear-btn');
   noteList = document.querySelectorAll('.list-container .list-group');
 }
+// if (window.location.pathname === '/') {
+//   startBtn = document.querySelector('#start-btn');
+// }
 
 // Show an element
 const show = (elem) => {
@@ -190,5 +195,11 @@ if (window.location.pathname === '/notes') {
   clearBtn.addEventListener('click', renderActiveNote);
   noteForm.addEventListener('input', handleRenderBtns);
 }
+// if (window.location.pathname === '/') {
+//   startBtn.addEventListener('click', ()=> {
+//     fetch('/notes');
+//   });
+  
+// }
 
 getAndRenderNotes();

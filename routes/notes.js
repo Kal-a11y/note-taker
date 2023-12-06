@@ -17,13 +17,8 @@ notesApi.post('/notes', (req, res) => {
     const newNote = {
         title: title,
         text: text,
-        note_id: uid(5)
+        id: uid(5)
     }
-
-    //Name undefined title
-    // if (typeof newNote.title === 'undefined'){
-    //     newNote.title = 'Untitled Note '+ newNote.note_id
-    // }
 
     //Add new note to database
     notes_dbList.push(newNote);
@@ -42,7 +37,7 @@ notesApi.delete('/notes/:id', (req, res) => {
     //Find and remove note from list
     const note_id = req.params.id;
     const updatedDb = notes_dbList.filter(note => {
-        return note.note_id !== note_id;
+        return note.id !== note_id;
     })
 
     //Remove current note from database

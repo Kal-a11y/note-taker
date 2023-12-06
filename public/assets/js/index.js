@@ -5,7 +5,6 @@ let saveNoteBtn;
 let newNoteBtn;
 let noteList;
 
-// let startBtn;
 
 document.addEventListener('DOMContentLoaded', function () {
   if (window.location.pathname === '/notes') {
@@ -18,9 +17,6 @@ document.addEventListener('DOMContentLoaded', function () {
     noteList = document.querySelectorAll('.list-container .list-group');
   }
 });
-// if (window.location.pathname === '/') {
-//   startBtn = document.querySelector('#start-btn');
-// }
 
 // Show an element
 const show = (elem) => {
@@ -199,11 +195,5 @@ document.addEventListener('DOMContentLoaded', function () {
     noteForm.addEventListener('input', handleRenderBtns);
   }
 });
-// if (window.location.pathname === '/') {
-//   startBtn.addEventListener('click', ()=> {
-//     fetch('/notes');
-//   });
-
-// }
 
 getAndRenderNotes();

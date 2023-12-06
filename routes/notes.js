@@ -32,7 +32,7 @@ notesApi.post('/notes', (req, res) => {
         if (err){
             console.log(err)
         } else {
-            console.log('New note has been added');
+            res.send('New note has been added');
         }
     });
     

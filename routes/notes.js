@@ -2,7 +2,8 @@ const notesApi = require('express').Router();
 const { uid } = require('uid');
 const fs = require('fs');
 
-const notes_dbList = require('../db/db.json')
+const notes_dbList = require('../db/db.json');
+const { log } = require('console');
 
 notesApi.get('/notes', (req, res) => {
     res.json(notesList);
@@ -38,11 +39,21 @@ notesApi.post('/notes', (req, res) => {
 });
 
 notesApi.delete('/notes/:id', (req, res) => {
+    //Find and remove note from list
     const note_id = req.params.id;
-    //get all notes
-    //check if note_id is the id of a note
-        //if yes remove
-    //overwrite database with new notes list
+    const updatedDb = notes_dbList.filter(note => {
+        return note.note_id !== note_id;
+    })
+
+    //Remove current note from database
+    dbString = JSON.stringify(updatedDb);
+    fs.writeFile('./db/db.json', dbString, err => {
+        if (err){
+            console.log(err)
+        } else {
+            console.log(`Note ${note_id} has been removed`);
+        }
+    });
 })
 
 module.exports = notesApi;

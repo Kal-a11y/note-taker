@@ -6,7 +6,7 @@ const notes_dbList = require('../db/db.json');
 const { log } = require('console');
 
 notesApi.get('/notes', (req, res) => {
-    res.json(notesList);
+    res.json(notes_dbList);
     
 });
     

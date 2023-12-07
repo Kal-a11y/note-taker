@@ -36,13 +36,12 @@ notesApi.post('/notes', (req, res) => {
 notesApi.delete('/notes/:id', (req, res) => {
     //Find and remove note from list
     const note_id = req.params.id;
-    const updatedDb = notes_dbList.filter(note => {
+    const updatedDb = JSON.stringify(notes_dbList.filter(note => {
         return note.id !== note_id;
-    })
+    }))
 
     //Remove current note from database
-    dbString = JSON.stringify(updatedDb);
-    fs.writeFile('./db/db.json', dbString, err => {
+    fs.writeFile('./db/db.json', updatedDb, err => {
         if (err){
             res.send(err);
             console.log(err)

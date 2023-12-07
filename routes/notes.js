@@ -44,8 +44,10 @@ notesApi.delete('/notes/:id', (req, res) => {
     dbString = JSON.stringify(updatedDb);
     fs.writeFile('./db/db.json', dbString, err => {
         if (err){
+            res.send(err);
             console.log(err)
         } else {
+            res.send(`Note ${note_id} has been removed`);
             console.log(`Note ${note_id} has been removed`);
         }
     });
